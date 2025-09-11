@@ -222,7 +222,7 @@ def main():
     if sys.platform.startswith("linux") and not is64 and "bdist_wheel" in sys.argv:
         subprocess.check_call("patch -p0 < patches/patchOpenEXR", shell=True)
 
-    if sys_platform.startswith('win') and platform.machine().lower() in ("arm64", "aarch64"):
+    if sys.platform.startswith('win') and platform.machine().lower() in ("arm64", "aarch64"):
         cmake_args.append("-DCPUBASELINE=NEON")
         cmake_args.append("-DCPUDISPATCH=NEONDOTPROD;NEONFP16")
         
