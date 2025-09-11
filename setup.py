@@ -224,7 +224,7 @@ def main():
 
     if sys.platform.startswith('win') and platform.machine().lower() in ("arm64", "aarch64"):
         cmake_args.append("-DCPUBASELINE=NEON")
-        cmake_args.append("-DCPUDISPATCH=NEONDOTPROD;NEONFP16")
+        cmake_args.append("-DCPUDISPATCH=;")
         
     # OS-specific components during CI builds
     if is_CI_build:
