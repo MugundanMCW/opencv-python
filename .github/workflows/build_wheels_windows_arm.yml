@@ -95,7 +95,6 @@ jobs:
       OPENCV_TEST_DATA_PATH: ${{ github.workspace }}\opencv_extra\testdata
       PYLINT_TEST_FILE: ${{ github.workspace }}\opencv\samples\python\squares.py
       PlatformToolset: v143
-      OPENCV_SKIP_CPU_BASELINE_CHECK: 1
     steps:
     - name: Cleanup
       shell: bash
