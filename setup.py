@@ -223,8 +223,7 @@ def main():
         subprocess.check_call("patch -p0 < patches/patchOpenEXR", shell=True)
 
     if sys.platform.startswith('win') and platform.machine().lower() in ("arm64", "aarch64"):
-        cmake_args.append("-DCPUBASELINE=NEON")
-        cmake_args.append("-DCPUDISPATCH=;")
+        cmake_args.append("-DOPENCV_SKIP_CPU_BASELINE_CHECK=OFF")
         
     # OS-specific components during CI builds
     if is_CI_build:
