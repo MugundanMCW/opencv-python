@@ -224,6 +224,7 @@ def main():
 
     if sys.platform.startswith('win') and platform.machine().lower() in ("arm64", "aarch64"):
         cmake_args.append("-DOPENCV_SKIP_CPU_BASELINE_CHECK=OFF")
+        cmake_args.append("-DCPU_BASELINE=NEON")
         
     # OS-specific components during CI builds
     if is_CI_build:
