@@ -32,7 +32,7 @@ jobs:
       ENABLE_CONTRIB: ${{ matrix.with_contrib }}
       OPENCV_TEST_DATA_PATH: ${{ github.workspace }}\opencv_extra\testdata
       PYTHON_VERSION: ${{ matrix.platform == 'arm64' && '3.11' || '3.9' }}
-      CMAKE_VERSION: ${{ matrix.platform == 'arm64' && '4.1.0' || '3.24.2' }}
+      CMAKE_VERSION: ${{ matrix.platform == 'arm64' && '4.1.0' || '4.1.0' }}
     steps:
     - name: Cleanup
       shell: bash
