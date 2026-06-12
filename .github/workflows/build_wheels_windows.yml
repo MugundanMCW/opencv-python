@@ -56,8 +56,6 @@ jobs:
       with:
         python-version: ${{ env.PYTHON_VERSION }}
         architecture: ${{ matrix.platform }}
-    - name: Setup MSBuild.exe
-      uses: microsoft/setup-msbuild@v1.1
     - name: Setup NASM
       if: matrix.platform != 'arm64'
       uses: ilammy/setup-nasm@v1
