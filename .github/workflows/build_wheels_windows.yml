@@ -58,8 +58,6 @@ jobs:
         architecture: ${{ matrix.platform }}
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v1.1
-      with:
-        msbuild-architecture: ${{ matrix.platform }}
     - name: Setup NASM
       if: matrix.platform != 'arm64'
       uses: ilammy/setup-nasm@v1
