@@ -104,7 +104,9 @@ def main():
     # Path regexes with forward slashes relative to CMake install dir.
     rearrange_cmake_output_data = {
         "cv2": (
-            [r"bin/opencv_videoio_ffmpeg\d{4}%s\.dll" % ("_64" if is64 else "")]
+            ([r"bin/opencv_videoio_ffmpeg\d{4}%s\.dll" % ("_64" if is64 else "")]
+             if not (platform.machine() == "ARM64" and sys.platform == "win32")
+             else [])
             if os.name == "nt"
             else []
         )
@@ -155,7 +157,8 @@ def main():
     files_outside_package_dir = {"cv2": ["LICENSE.txt", "LICENSE-3RD-PARTY.txt"]}
 
     ci_cmake_generator = (
-        ["-G", "Visual Studio 17 2022"]
+        # For Windows: let CMake auto-detect the latest VS vis vswhere
+        []
         if os.name == "nt"
         else ["-G", "Unix Makefiles"]
     )
