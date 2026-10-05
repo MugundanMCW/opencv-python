@@ -156,7 +156,10 @@ def main():
     files_outside_package_dir = {"cv2": ["LICENSE.txt", "LICENSE-3RD-PARTY.txt"]}
 
     ci_cmake_generator = (
-        ["-G", "Visual Studio 17 2022"]
+        # Windows ARM64: Runner includes only preinstalled VS2026 tools
+        ["-G", "Visual Studio 18 2026"]
+        if os.name == "nt" and platform.machine() == "ARM64"
+        else ["-G", "Visual Studio 17 2022"]
         if os.name == "nt"
         else ["-G", "Unix Makefiles"]
     )
